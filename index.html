@@ -1,100 +1,550 @@
 <!DOCTYPE html>
-
 <html>
-
+	<!-- ================================================================================================================ -->
+	<!-- Cabeza de una estructura de una página web <head> ... </head> ================================================== -->
+	<!--    - Configuración base de nuestra página web y el navegador. 
+		    - Enlaces a recursos externos, estilos y scripts     -->
 	<head>
-		<title>Mi Portafolio2</title>
-		<meta chartset="ISO-8859-1" />
-		<link rel="stylesheet" href="main.css"/>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Inicio | RAY 2018</title>
+		<meta name="description" content="Contenido, teoría y ejercicios de la asignatura RAY - 2018">
+		<meta name="author" content="G.R.P.">
+
+		<!-- Enlaces a archivos externos que definen estilos css -->
+		<link href="style/bootstrap.min.css" rel="stylesheet">
+		<link href="style/font-awesome.min.css" rel="stylesheet">
+		<link href="style/animate.min.css" rel="stylesheet"> 
+		<link href="style/lightbox.css" rel="stylesheet"> 
+		<link href="style/main.css" rel="stylesheet">
+		<link href="style/responsive.css" rel="stylesheet">
+
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- Enlaces a las imágenes a usar como iconos del navegador -->
+		<link rel="shortcut icon" href="resources/image/ico/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="resources/image/ico/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/image/ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/image/ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="resources/image/ico/apple-touch-icon-57-precomposed.png">
+
 		<style>
-			header{
-					text-align: center;	
-				  }
-			nav{
-				text-align: left;
-			}	  
-			article{
-					text-align: left;
-			}
-		</style>
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 500px;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+.glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+#borderimg { 
+    border: 10px solid transparent;
+    padding: 15px;
+    border-image: url(border.png) 30 round;
+}
+.shadow{
+    text-shadow: 3px 2px black;
+}
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+  z-index: 2;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+</style>
 
 	</head>
+	<!-- ================================================================================================================ -->
 
-	<body class="background">
 
-		<div id="info personal">
-			<div id="info">
-				<h2 class="titulo">
-					Informacion Personal
-				</h2>
-				<img src="http://www.baytekgames.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg" alt="Persona" width="360" height="340">
-					<ul class="info">
-						<li class="info2"><b class="colornegro">Nombre y apellido:</b> <small> Hakeem Tariq Siddique</small></li>
-						<li class="info5"><b class="colornegro">Fecha de nacimiento:</b> <small> 25/10/1999</small></li>
-						<li class="info4"><b class="colornegro">Idiomas:</b> <small> Ingles(nativo), Español(alto), Italiano(poco), Frances(poco)</small></li>
-						<li class="info3"><b class="colornegro">Estudios:</b><small> Titulo de E.S.O San miguel de abona; Titulo Bachillerato Ciencias Tecnologicas; Titulo B2 de Ingles</small></li>
-						<li class="info3"><b class="colornegro">Programas:</b><small> Blender, Maya, Photoshop, Word, Unity, HTML5</small></li>
-						<li class="info2"><b class="colornegro">Mundo Laboral:</b><small> Por ahora no he trabajado</small></li>
-					</ul>
+	<!-- ================================================================================================================ -->
+	<!-- Cuerpo de una estructura de una página web <body> ... </body> ================================================== -->
+	<!--    - Sección contenedora de todos los elementos renderizables por el navegador. 
+		    - Cargas "tardías" de recursos externos -->
+	<body>
+		<!-- ================================================================================================================ -->
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<header id="header" style="background-image: url(https://www.zdf.de/assets/doku-wissen-102~1900x200?cb=1477047902721);">
+			<div class="container">
+
+				<div class="row">
+					<div class="col-sm-12 overflow">
+						<div class="social-icons pull-right">
+							<ul class="nav nav-pills">
+								<li><a href=""><i class="fa fa-facebook"></i></a></li>
+								<li><a href=""><i class="fa fa-twitter"></i></a></li>
+								<li><a href=""><i class="fa fa-google-plus"></i></a></li>
+								<li><a href=""><i class="fa fa-dribbble"></i></a></li>
+								<li><a href=""><i class="fa fa-linkedin"></i></a></li>
+							</ul>
+						</div> 
+					</div>
+				</div>
+
+			</div> <!-- div#ray-title.container -->
+			<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+			<div class="navbar navbar-inverse" style="background-color: transparent;" role="banner">
+				<div class="container">
+
+					<div class="navbar-header">
+						<!-- Menú tipo botón expandible para la versión móvil -->
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Logo y enlace a la página de inicio -->
+						<a class="navbar-brand" href="index.html">
+							<h1><img src="https://vignette.wikia.nocookie.net/starwarsrebels/images/e/ea/Confederacy_of_Independent_Systems_symbol.png/revision/latest?cb=20161024162914"  style=" margin-bottom: 200px; height: 130px; margin-top: -30px;" alt="logo"></h1>
+						</a>
+					</div>
+
+					<!-- Barra de navegación -->
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="active"><a href="index.html" style="color: white; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; font-size: 150%">Portada</a></li>
+							<!--
+							<li class="dropdown"><a href="pages/teoria.html" style="color: white; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; font-size: 150%">Teoría <i class="fa fa-angle-down"></i></a>
+								<ul role="menu" class="sub-menu">
+									
+									<li><a href="pages/tema001.html">Tema 1</a></li>
+									<li><a href="aboutus.html">About</a></li>
+									<li><a href="aboutus2.html">About 2</a></li>
+									<li><a href="service.html">Services</a></li>
+									<li><a href="pricing.html">Pricing</a></li>
+									<li><a href="contact.html">Contact us</a></li>
+									<li><a href="contact2.html">Contact us 2</a></li>
+									<li><a href="404.html">404 error</a></li>
+									<li><a href="coming-soon.html">Coming Soon</a></li>
+									
+								</ul>
+							</li>
+								-->
+							<li class="dropdown"><a href="pages/practicas.html" style="color: white; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; font-size: 150%">Prácticas <i class="fa fa-angle-down"></i></a>
+								<ul role="menu" class="sub-menu">
+									
+									<li><a href="pages/ejercicio001.html">Ejercicios 1</a></li>
+									<li><a href="pages/ejercicio002.html">Ejercicios 2</a></li>
+									<!--
+									<li><a href="blog.html">Blog Default</a></li>
+									<li><a href="blogtwo.html">Timeline Blog</a></li>
+									<li><a href="blogone.html">2 Columns + Right Sidebar</a></li>
+									<li><a href="blogthree.html">1 Column + Left Sidebar</a></li>
+									<li><a href="blogfour.html">Blog Masonary</a></li>
+									<li><a href="blogdetails.html">Blog Details</a></li>
+									-->
+								</ul>
+							</li>
+<!--
+							<li class="dropdown"><a href="pages/portfolio.html" style="color: white; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;  font-size: 150%">Portfolio <i class="fa fa-angle-down"></i></a>
+								<ul role="menu" class="sub-menu">
+									<li><a href="pages/galeria.html">Galeria</a></li>
+									<li><a href="pages/cv.html ">Curriculum Vitae</a></li>
+
+									
+									<li><a href="portfoliofour.html">Isotope 3 Columns + Right Sidebar</a></li>
+									<li><a href="portfolioone.html">3 Columns + Right Sidebar</a></li>
+									<li><a href="portfoliotwo.html">3 Columns + Left Sidebar</a></li>
+									<li><a href="portfoliothree.html">2 Columns</a></li>
+									<li><a href="portfolio-details.html">Portfolio Details</a></li>
+									
+								</ul>
+							</li>
+-->
+							<li class="dropdown"><a href="pages/videojuegos.html " style="color: white;; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; font-size: 150%">Videojuegos</a>
+								<ul role="menu" class="sub-menu">
+									<li><a href="pages/videojuegosbricks.html">Bricks</a></li>
+								</ul>
+
+							</li>
+
+							<li class="dropdown"><a href="pages/cheetsheet.html " style="color: white;; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; font-size: 150%">Recusros</a>
+								<ul role="menu" class="sub-menu">
+									<li><a href="pages/html51.html">HTML5</a></li>
+									<li><a href="pages/css3.html">CSS3</a></li>
+									<li><a href="pages/bootstrap.html">BOOTSTRAP</a></li>
+								</ul>
+
+							</li>
+						</ul>
+					</div>
+
+					<div class="search">
+						<form role="form">
+							<i class="fa fa-search"></i>
+							<div class="field-toggle">
+								<input type="text" class="search-form" autocomplete="off" placeholder="Search">
+							</div>
+						</form>
+					</div>
+
+				</div>
+
 			</div>
 
-		</div>
+			<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+		</header>
+		<!--/#header - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<!-- ================================================================================================================ -->
 
-		<div id="autobiografia">
-			<h3 class="titulo2">
-				<b><ins>Autobiografia</ins></b>
-			</h3>
-			<p style="color:white;">
-				<b>Nací en Tenerife 25 octubre 1999, terminé la E.S.O en 2016 y bachillerato este año(2018). Empezé este año con el G.S de 3d animaciones, juegos y entonos interactivos. Aun no he entrado en el mundo laboral y no tengo experiencia laboral</b>
-			</p>
-		</div>
+		<!-- ================================================================================================================ -->
+		<section id="home-slider">
+			<div class="container">
+				<div class="row">
+					<div class="main-slider">
+						<div class="slide-text">
+							<h1 class="shadow"  style="color: red;"><b>Bienvenido a mi Pagina Web</b></h1>
+							<p>Nací en Tenerife 25 octubre 1999, terminé la E.S.O en 2016	 y bachillerato este año(2018). Empezé este año con el G.S de 3d animaciones, juegos y entonos interactivos. Aun no he entrado en el mundo laboral y no tengo experiencia laboral</p>
+							<a href="pages/teoria.html" class="btn btn-common">Empecemos</a>
+							</div>
+								<img src="http://www.baytekgames.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg" style="width: 200px; height: 200px; border-radius: 50% ; margin-right:-150px; margin-bottom: 100px;" class="slider-hill">
+									<h2 class= "glow" style="text-align:center; font-size: 50px;">Slideshow Gallery</h2>
 
-		<div id="portafolio">
-			<h2  class="titulo3">Aqui demuestro unos de mis mejores trabajos</h2>
-			<a href="http://userscontent2.emaze.com/images/ff15c7a6-8e34-47a2-9c8e-10397009580e/83010732-963f-41c9-9eff-94f83ff2acd8.jpg">
-				<img src="http://userscontent2.emaze.com/images/ff15c7a6-8e34-47a2-9c8e-10397009580e/83010732-963f-41c9-9eff-94f83ff2acd8.jpg" alt="Pez" class="imagen1">
-			</a>
-			<a href="http://www.rafarelo.com/3d/wp-content/uploads/2016/03/BustoHombreBalleno.jpg">
-				<img src="http://www.rafarelo.com/3d/wp-content/uploads/2016/03/BustoHombreBalleno.jpg" class="imagen2">
-			</a>
-			<a href="https://d22blwhp6neszm.cloudfront.net/11/102806/blender02.png">
-				<img src="https://d22blwhp6neszm.cloudfront.net/11/102806/blender02.png" class="imagen2">
-			</a>
-			<a href="https://i.pinimg.com/originals/70/4d/5f/704d5fb1dd3541a57182bfbcd7e5dd92.jpg">
-				<img src="https://i.pinimg.com/originals/70/4d/5f/704d5fb1dd3541a57182bfbcd7e5dd92.jpg" class="imagen1">
-			</a>
-			<a href="https://i.imgur.com/9MOkg6l.jpg">
-				<img src="https://i.imgur.com/9MOkg6l.jpg" class="imagen2">
-			</a>
-			<a href="https://orig00.deviantart.net/77cb/f/2012/117/1/4/shelby_cobra__work_in_progress__blender_by_ifilgood-d4xs5z8.png">
-				<img src="https://orig00.deviantart.net/77cb/f/2012/117/1/4/shelby_cobra__work_in_progress__blender_by_ifilgood-d4xs5z8.png" class="imagen2">
-			</a>
-			<a href="https://i.redd.it/9f1b7lqkr8a01.png">
-				<img src="https://i.redd.it/9f1b7lqkr8a01.png" class="imagen1">
-			</a>
-			<a href="https://static1.squarespace.com/static/58586fa5ebbd1a60e7d76d3e/t/5908a3f69f7456d3d9c63f00/1493738543154/">
-				<img src="https://static1.squarespace.com/static/58586fa5ebbd1a60e7d76d3e/t/5908a3f69f7456d3d9c63f00/1493738543154/" class="imagen2">
-			</a>
+<div class="container" style="height: 500px; margin-top: 10px;">
+  <div class="mySlides">
+    <div class="numbertext">1 / 6</div>
+    <img  id="borderimg" src="https://www.foro3d.com/attachments/190220d1391694364-reto-blender-total-1556265_10202554840648671_113561479_o.jpg" style=" color:white; margin-left: 290px; width: 580px; height: 361px">
+  </div>
 
-			
-					<a href="https://www.youtube.com/watch?v=_OfE-jQ5zmI" style="background-color: white"> Si quieres mirar mas de mis trabajos <b>haz click aqui</b></a>
-		</div>
+  <div class="mySlides">
+    <div class="numbertext">2 / 6</div>
+    <img  id="borderimg" src="http://userscontent2.emaze.com/images/ff15c7a6-8e34-47a2-9c8e-10397009580e/83010732-963f-41c9-9eff-94f83ff2acd8.jpg" style=" color:white; margin-left: 290px; width: 580px; height: 361px">
+  </div>
 
-	<div id="informacion del contacto">
-		<h2 style="color:white"><ins>Contactame ahora</ins></h2>
-		<ul style="color:white">
-			<li>
-				<b>Dirrecion:</b>vvvvbbvjjhegsnvjfj
-			</li>
-			<li>
-				<b>Telefono:</b>999-99-99-99
-			</li>
-			<li>
-				<b>Correo Electronico:</b>jrjrthshesje@gmail.com
-			</li>
-		</ul>
-	</div>
+  <div class="mySlides">
+    <div class="numbertext">3 / 6</div>
+    <img  id="borderimg" src="http://www.rafarelo.com/3d/wp-content/uploads/2016/03/BustoHombreBalleno.jpg" style=" color:white; margin-left: 290px; width: 580px; height: 361px;">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">4 / 6</div>
+    <img  id="borderimg" src="https://d22blwhp6neszm.cloudfront.net/11/102806/blender02.png" style=" color:white; margin-left: 290px; width: 580px; height: 361px;">
+  </div>
 
+  <div class="mySlides">
+    <div class="numbertext">5 / 6</div>
+    <img  id="borderimg" src="https://i.pinimg.com/originals/70/4d/5f/704d5fb1dd3541a57182bfbcd7e5dd92.jpg" style=" color:white; margin-left: 290px; width: 580px; height: 361px;">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">6 / 6</div>
+    <img  id="borderimg" src="https://i.imgur.com/9MOkg6l.jpg" style=" color:white; margin-left: 290px; width: 580px; height: 361px;">
+  </div>
+    
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="https://www.foro3d.com/attachments/190220d1391694364-reto-blender-total-1556265_10202554840648671_113561479_o.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="http://userscontent2.emaze.com/images/ff15c7a6-8e34-47a2-9c8e-10397009580e/83010732-963f-41c9-9eff-94f83ff2acd8.jpg" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="http://www.rafarelo.com/3d/wp-content/uploads/2016/03/BustoHombreBalleno.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://d22blwhp6neszm.cloudfront.net/11/102806/blender02.png" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://i.pinimg.com/originals/70/4d/5f/704d5fb1dd3541a57182bfbcd7e5dd92.jpg" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
+    </div>    
+    <div class="column">
+      <img class="demo cursor" src="https://i.imgur.com/9MOkg6l.jpg" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
+    </div>
+  </div>
+</div>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+<!--
+						<img src="https://cdn.pixabay.com/photo/2017/10/12/10/56/spaceship-2844249__340.png" class="slider-hill" style="margin-right: 300px; margin-top: 650px;" alt="slider image">
+						<img src="resources/image/home/slider/house.png" class="slider-house" style="margin-right: 390px; margin-top: 620px;" alt="slider image">
+						<img src="resources/image/home/slider/sun.png" class="slider-sun" style="margin-right: 300px;" alt="slider image">
+						<img src="resources/image/home/slider/birds1.png" class="slider-birds1" style="margin-right: 300px; margin-top: 450px;" alt="slider image">
+						<img src="resources/image/home/slider/birds2.png" class="slider-birds2" style="margin-right: 300px; margin-top: 450px;" alt="slider image">
+					-->
+					</div>
+				</div>
+			</div>
+			<div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
+		</section>
+		<!--/#home-slider-->
+		<!-- ================================================================================================================ -->
+
+		<!-- ================================================================================================================ -->
+		<footer id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 text-center bottom-separator">
+						<img src="resources/image/home/under.png" class="img-responsive inline" alt="">
+					</div>
+					
+					<div class="col-md-4 col-sm-6">
+						<div class="testimonial bottom">
+							<h2>Interfaces de usuario</h2>
+							<div class="media">
+								<div class="pull-left">
+									<a href="#"><img src="resources/image/home/profile1.png" alt=""></a>
+								</div>
+								<div class="media-body">
+									<blockquote>Las interfaces básicas de usuario son aquellas que incluyen cosas como menús, ventanas, teclado, ratón, y algunos otros sonidos que la computadora hace, en general, todos aquellos canales por los cuales se permite la comunicación entre el hombre y la computadora.</blockquote>
+									<h3><a target="_blank" href="http://hcibib.org/tcuid/">- Lewis y Rieman (1993)</a></h3>
+								</div>
+							</div>
+							<!--
+							<div class="media">
+								<div class="pull-left">
+									<a href="#"><img src="resources/image/home/profile2.png" alt=""></a>
+								</div>
+								<div class="media-body">
+									<blockquote>Capicola nisi flank sed minim sunt aliqua rump pancetta leberkas venison eiusmod.</blockquote>
+									<h3><a href="">- Abraham Josef</a></h3>
+								</div>
+							</div> 
+							-->
+						</div> 
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<div class="contact-info bottom">
+							<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <h1 style="color: white;">Hakeem Siddique</h1> 
+     <address>
+							E-mail: <a href="mailto:someone@example.com">...@....com</a> <br> 
+							Teléfono: +.. (...) ... ... <br> 
+							Fax: +.. (...) ... ... <br> 
+							</address>
+						 	<h2>Dirección</h2>
+							<address>
+							....., .. .... ....., <br> 
+							.... ...., <br> 
+							......, ... ... <br> 
+							España <br> 
+							</address>
+   							 </div>
+ 							 </div>
+							</div>
+						</div>
+					</div>
+
+					<!--
+					<div class="col-md-4 col-sm-12">
+						<div class="contact-form bottom">
+							<h2>Send a message</h2>
+							<form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
+								<div class="form-group">
+									<input type="text" name="name" class="form-control" required="required" placeholder="Name">
+								</div>
+								<div class="form-group">
+									<input type="email" name="email" class="form-control" required="required" placeholder="Email Id">
+								</div>
+								<div class="form-group">
+									<textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your text here"></textarea>
+								</div>
+								<div class="form-group">
+									<input type="submit" name="submit" class="btn btn-submit" value="Submit">
+								</div>
+							</form>
+						</div>
+					</div>
+					-->
+
+					<div class="col-sm-12">
+						<div class="copyright-text text-center">
+							<p>CIFP César Manrique 2018.</p>
+							<p>Modificación de la plantilla: <a target="_blank" href="">G.R.P.</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!--/#footer-->
+		<!-- ================================================================================================================ -->
+
+		<!-- ================================================================================================================ -->
+		<!-- Carga "tardía" de librerías de scripts externos -->
+		<script type="text/javascript" src="script/jquery.js"></script>
+		<script type="text/javascript" src="script/bootstrap.min.js"></script>
+		<script type="text/javascript" src="script/lightbox.min.js"></script>
+		<script type="text/javascript" src="script/wow.min.js"></script>
+		<script type="text/javascript" src="script/main.js"></script>
+		<!-- ================================================================================================================ -->
 	</body>
-
+	<!-- ================================================================================================================ -->
 </html>
