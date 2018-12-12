@@ -1,0 +1,60 @@
+
+section#game-section {
+    width: 400px;
+    height:300px;
+    background-color: blue;
+    text-align: center;
+    position: relative;
+    margin: auto;
+    margin-bottom: 20px;
+     z-index: 900;
+}
+
+div#gameBackground {
+background: url(../resources/image/Space.jpg) 0 100% repeat-x;
+position: fixed;
+width: 100%;
+height: 1000px;
+left: 0px;
+z-index: 800;
+display: block;
+
+}
+
+canvas#gameCanvas {
+    width: 480px;
+    height:320px;
+    background: url(../resources/image/videojuegos1.jpg) 0 100% repeat-x;
+    position: relative;
+    top:10px;
+    display: block;
+    margin: auto;
+    z-index: 901;
+}
+
+div#gameButtonsSec {
+    width: 480px;
+    height:30px;
+    background-color: red;
+    position: relative;
+    margin: auto;
+    top: 20px;
+    z-index: 901;
+
+}
+
+button#startButton {
+    width: 100px;
+    height:30px;
+    background-color: white;
+    margin-right: 10px;
+     z-index: 9002;
+}
+
+button#reloadButton {
+    width: 100px;
+    height:30px;
+    background-color: white;
+    margin-left: 10px;
+     z-index: 902;
+}
