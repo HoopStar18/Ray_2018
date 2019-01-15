@@ -19,7 +19,7 @@
 		<link href="../style/lightbox.css" rel="stylesheet"> 
 		<link href="../style/main.css" rel="stylesheet">
 		<link href="../style/responsive.css" rel="stylesheet">
-		<link href="../style/bricks.css" rel="stylesheet">
+		<link href="../style/jumping.css" rel="stylesheet">
 
 		<!--[if lt IE 9]>
 			<script src="js/html5shiv.js"></script>
@@ -190,10 +190,10 @@
 <section id="game-section">
 	<div id="gameBackground"></div>
 	
-	<canvas id="gameCanvas" width="450" height="320""></canvas>
+	<canvas id="gameCanvas" width="450" height="320" style="border:1px solid #000000;">
+	</canvas>
 	<div id="gameButtonsSec">
-	<button id="startButton" type="button" onclick="init();">Start</button>
-	<button id="reloadButton" type="button" onclick="reload();">Recargar</button> 
+	<button id="reloadButton" type="button" onclick="initGame();">Recargar</button> 
 	</div>
 </section>
 							<!--<a href="ejercicio001.html" class="btn btn-common">Ir al ejercicio 1</a>-->
@@ -300,7 +300,7 @@
 		<script type="text/javascript" src="../script/lightbox.min.js"></script>
 		<script type="text/javascript" src="../script/wow.min.js"></script>
 		<script type="text/javascript" src="../script/main.js"></script>
-		<script type="text/javascript" src="../script/bricks.js"></script>
+		<script type="text/javascript" src="../script/jumping.js"></script>
 		
 		<!-- ================================================================================================================ -->
 	</body>
