@@ -193,7 +193,13 @@
 	<canvas id="gameCanvas" width="450" height="320" style="border:1px solid #000000;">
 	</canvas>
 	<div id="gameButtonsSec">
-	<button id="reloadButton" type="button" onclick="initGame();">Recargar</button> 
+	<button id="reloadButton" type="button" onclick="initGame();">Recargar</button>
+   <div style="text-align:center;width:480px;">
+  <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
+  <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
+  <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
+  <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button>
+</div> 
 	</div>
 </section>
 							<!--<a href="ejercicio001.html" class="btn btn-common">Ir al ejercicio 1</a>-->
@@ -301,7 +307,6 @@
 		<script type="text/javascript" src="../script/wow.min.js"></script>
 		<script type="text/javascript" src="../script/main.js"></script>
 		<script type="text/javascript" src="../script/jumping.js"></script>
-		
 		<!-- ================================================================================================================ -->
 	</body>
 	<!-- ================================================================================================================ -->
